@@ -50,3 +50,5 @@ gem 'active_model_serializers'
 
 gem 'http'
 
+gem 'jwt'
+
