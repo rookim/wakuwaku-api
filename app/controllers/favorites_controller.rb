@@ -26,13 +26,12 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    # idk if this is right
-    favorite = Favorite.find(params[:id])
-    if favorite.destroy
-      render json: {message: "Anime has been successfully removed from your favorites..."}
+    if Favorite.exists?(params[:id])
+      favorite = Favorite.find(params[:id])
+      favorite.destroy
+      render json: {message: "Successfully removed from your Favorites!"}
     else
-      # maybe a user is trying to delete a favorites item that doesn't exist
-      render json: {}, status: :bad_request
+      render json: {message: "Does not exist..."}, status: :bad_request
     end
   end
 
