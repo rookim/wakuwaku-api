@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   post "/favorites" => "favorites#create"
   delete "/favorites/:id" => "favorites#destroy"
 
-  # get "/animes" => "animes#index"
-  # get "/animes/:id" => "animes#show"
+  get "/animes" => "animes#index"
+  get "/animes/:id" => "animes#show"
   
   post "/sessions" => "sessions#create"
 

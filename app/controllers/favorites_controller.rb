@@ -13,16 +13,13 @@ class FavoritesController < ApplicationController
   end
 
   def create
-    user_id = current_user.id
-    # grab tvmaze id of anime 
-
-
     favorite = Favorite.new(
-      user_id: user_id,
-      tvmaze_id:  
+      user_id: current_user.id,
+      # this info is being sent from the frontend?
+      tvmaze_id: params[:tvmaze_id]
     )
     if favorite.save
-      render json: {favorite, message: "Anime has been successfully added to favorites"}
+      render json: {message: "Anime has been successfully added to favorites"}
     else
       render json: {}, status: :bad_request
     end
@@ -32,10 +29,10 @@ class FavoritesController < ApplicationController
     # idk if this is right
     favorite = Favorite.find(params[:id])
     if favorite.destroy
-      render json {message: "Anime has been successfully removed from your favorites..."}
+      render json: {message: "Anime has been successfully removed from your favorites..."}
     else
       # what error would i render?
-      render json {}, status: :internal_server_error
+      render json: {}, status: :internal_server_error
     end
   end
 
