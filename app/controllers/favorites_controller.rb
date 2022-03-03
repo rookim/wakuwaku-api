@@ -31,8 +31,8 @@ class FavoritesController < ApplicationController
     if favorite.destroy
       render json: {message: "Anime has been successfully removed from your favorites..."}
     else
-      # what error would i render?
-      render json: {}, status: :internal_server_error
+      # maybe a user is trying to delete a favorites item that doesn't exist
+      render json: {}, status: :bad_request
     end
   end
 

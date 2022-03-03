@@ -44,17 +44,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    user = User.find(params[:id])
-    if user.id == current_user.id
-      if user.destroy
-        render json: {message: "User successfully deleted..."}
-      else
-        # not sure if this is the right status for this sad path
-        render json: {}, status: :internal_server_error
-      end
-    else
-      render json: {}, status: :unauthorized
-    end
+    current_user.destroy
+    render json: {message: "User was successfully deleted...."}
   end
 
 end
