@@ -18,10 +18,11 @@ class FavoritesController < ApplicationController
       # this info is being sent from the frontend?
       tvmaze_id: params[:tvmaze_id]
     )
-    if favorite.save
-      render json: {message: "Anime has been successfully added to favorites"}
+    if Favorite.exists?(user_id: current_user.id, tvmaze_id: params[:tvmaze_id])
+      render json: {message: "This anime has already been added to your Favorites ;-;"}, status: :bad_request
     else
-      render json: {}, status: :bad_request
+      favorite.save
+      render json: {message: "Anime has been successfully added to your Favorites!"}
     end
   end
 
@@ -29,7 +30,7 @@ class FavoritesController < ApplicationController
     if Favorite.exists?(params[:id])
       favorite = Favorite.find(params[:id])
       favorite.destroy
-      render json: {message: "Successfully removed from your Favorites!"}
+      render json: {message: "Successfully removed from your Favorites..."}
     else
       render json: {message: "Does not exist..."}, status: :bad_request
     end
