@@ -19,10 +19,10 @@ class FavoritesController < ApplicationController
       tvmaze_id: params[:tvmaze_id]
     )
     if Favorite.exists?(user_id: current_user.id, tvmaze_id: params[:tvmaze_id])
-      render json: {message: "This anime has already been added to your Favorites ;-;"}, status: :bad_request
+      render json: {message: "This anime has already been added to your Favorites... ;-;"}, status: :bad_request
     else
       favorite.save
-      render json: {message: "Anime has been successfully added to your Favorites!"}
+      render json: {message: "Anime has been successfully added to your Favorites! ㅇㅂㅇ"}
     end
   end
 
@@ -32,7 +32,7 @@ class FavoritesController < ApplicationController
       favorite.destroy
       render json: {message: "Successfully removed from your Favorites..."}
     else
-      render json: {message: "Does not exist..."}, status: :bad_request
+      render json: {message: "Could not be found..."}, status: :not_found
     end
   end
 
