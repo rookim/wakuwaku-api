@@ -9,39 +9,29 @@ class UsersController < ApplicationController
       password: params[:password],
       password_confirmation: params[:password_confirmation]
     )
-    if User.exists?(email: params[:email])
-      render json: {message: "That email has been used already... T^T"}, status: :bad_request
-    elsif user.save
-      render json: { message: "User created successfully! :D" }, status: :created
+    if user.save
+      render json: user, status: :created
     else
       render json: { errors: user.errors.full_messages }, status: :bad_request
     end
   end
 
   def show
-    user = User.find(params[:id])
-    if user.id == current_user.id
-      render json: user
-    else
-      render json: {}, status: :unauthorized
-    end
+    user = current_user
+    render json: user
   end
 
   def update
-    user = User.find(params[:id])
-    if user.id == current_user.id
-      user.email = params[:email] || user.email
-      user.username = params[:username] || user.username
-      user.phone_number = params[:phone_number] || user.phone_number
-      user.password = params[:password] || user.password
-      user.password_confirmation = params[:password_confirmation] || user.password_confirmation
-        if user.save
-          render json: { message: "User info updated successfully! ;)" }
-        else
-          render json: {errors: user.errors.full_messages}, status: :bad_request
-        end
+    user = current_user
+    user.email = params[:email] || user.email
+    user.username = params[:username] || user.username
+    user.phone_number = params[:phone_number] || user.phone_number
+    user.password = params[:password] || user.password
+    user.password_confirmation = params[:password_confirmation] || user.password_confirmation
+    if user.save
+      render json: user
     else
-      render json: {}, status: :unauthorized
+      render json: {errors: user.errors.full_messages}, status: :bad_request
     end
   end
 
