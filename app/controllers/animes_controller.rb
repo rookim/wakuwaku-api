@@ -4,8 +4,14 @@ class AnimesController < ApplicationController
     # maybe only allow search for currently airing anime? LOOK AT API
     response = HTTP.get("https://api.tvmaze.com/search/shows?q=#{params[:title]}")
 
-    # for now, raw body data; can parse later
-    animes = response.parse(:json)
+    shows = response.parse(:json)
+    animes = []
+    # only take the anime shows that are still currently running and put it in the animes array
+    shows.each do |show|
+      if show["show"]["type"] == "Animation" && show["show"]["status"] == "Running"
+        animes << show
+      end
+    end
     if current_user
       animes.each do |anime|
         anime[:favorited] = Favorite.exists?(user_id: current_user.id, tvmaze_id: anime["show"]["id"])
