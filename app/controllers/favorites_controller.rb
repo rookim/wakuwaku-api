@@ -1,15 +1,10 @@
 class FavoritesController < ApplicationController
-  before_action :authenticate_user, except: [:index]
+  before_action :authenticate_user
   
   def index
-    if current_user
-      user = User.find(current_user.id)
-      favorites = user.favorites
+      favorites = current_user.favorites
       # renders a list of hashes
       render json: favorites
-    else
-      render json: {message: "Log in please! ^__^"}
-    end
   end
 
   def create
@@ -22,7 +17,7 @@ class FavoritesController < ApplicationController
       render json: {message: "This anime has already been added to your Favorites... ;-;"}, status: :bad_request
     else
       favorite.save
-      render json: {message: "Anime has been successfully added to your Favorites! ㅇㅂㅇ"}
+      render json: favorite, status: :created
     end
   end
 
