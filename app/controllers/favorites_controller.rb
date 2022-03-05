@@ -2,9 +2,7 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user
   
   def index
-      favorites = current_user.favorites
-      # renders a list of hashes
-      render json: favorites
+      render json: current_user.favorites
   end
 
   def create
