@@ -20,12 +20,12 @@ class AnimesController < ApplicationController
 
     render json: animes
   end
-
-  # def show
-  #   response = HTTP.get("https://api.tvmaze.com/shows/#{params[:id]}")
+  
+  def show
+    response = HTTP.get("https://api.tvmaze.com/shows/#{params[:id]}")
     
-  #   # for now, raw body data; can parse later
-  #   render json: response.parse(:json)
-  # end
+    # for now, raw body data; can parse later
+    render json: response.parse(:json)
+  end
 
 end

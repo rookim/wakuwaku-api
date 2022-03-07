@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   delete "/favorites/:id" => "favorites#destroy"
 
   get "/animes" => "animes#index"
-  # get "/animes/:id" => "animes#show"
+  get "/animes/:id" => "animes#show"
   
   post "/sessions" => "sessions#create"
 
