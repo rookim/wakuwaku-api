@@ -15,6 +15,10 @@ class AnimesController < ApplicationController
     if current_user
       animes.each do |anime|
         anime[:favorited] = Favorite.exists?(user_id: current_user.id, tvmaze_id: anime["show"]["id"])
+        if anime[:favorited] == true
+          id = Favorite.find_by(user_id: current_user.id, tvmaze_id: anime["show"]["id"])
+          anime[:favoritesId] = id[:id]
+        end
       end  
     end
 
