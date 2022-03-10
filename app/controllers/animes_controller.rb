@@ -8,7 +8,7 @@ class AnimesController < ApplicationController
     animes = []
     # only take the anime shows that are still currently running and put it in the animes array
     shows.each do |show|
-      if show["show"]["type"] == "Animation" && show["show"]["status"] == "Running"
+      if show["show"]["type"] == "Animation" && show["show"]["status"] == "Running" && show["show"]["_links"]["nextepisode"]
         animes << show
       end
     end
