@@ -51,4 +51,5 @@ gem 'active_model_serializers'
 gem 'http'
 
 gem 'jwt'
+gem 'twilio-ruby', '~> 5.65.1'
 
