@@ -6,10 +6,14 @@ class Favorite < ApplicationRecord
   def show
     response = HTTP.get("https://api.tvmaze.com/shows/#{tvmaze_id}")
     anime = response.parse(:json)
-    
-    ep_link = anime["_links"]["nextepisode"]["href"]
-    response2 = HTTP.get(ep_link)
-    next_ep_info = response2.parse(:json)
+
+    if anime["_links"]["nextepisode"].present?
+      next_ep = anime["_links"]["nextepisode"]["href"]
+      response2 = HTTP.get(next_ep)
+      next_ep_info = response2.parse(:json)
+    else
+      next_ep_info = ""
+    end
 
     return {
       id: anime["id"],
