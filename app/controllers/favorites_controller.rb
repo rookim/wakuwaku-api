@@ -1,8 +1,15 @@
 class FavoritesController < ApplicationController
-  before_action :authenticate_user
+  before_action :authenticate_user, except: [:index]
   
   def index
-    render json: current_user.favorites
+    if User.exists?(username: params[:username])
+      user = User.find_by(username: params[:username])
+      render json: user.favorites
+    elsif User.exists?(username: params[:username]) == false
+      render json: {message: "User not found"}, status: :ok
+    else
+      render json: current_user.favorites
+    end
   end
 
   def create
