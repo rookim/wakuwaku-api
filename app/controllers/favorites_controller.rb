@@ -26,8 +26,8 @@ class FavoritesController < ApplicationController
     else
       favorite.save
       # # grab next episode deets
-      # next_episode = favorite.show[:next_ep]
-      # # ping Twilio API
+      next_episode = favorite.show[:next_ep]
+      # ping Twilio API
       # client = Twilio::REST::Client.new Rails.application.credentials.twilio_api.account_sid, Rails.application.credentials.twilio_api.auth_token
       # message = client.messages.create(
       #   body: "Episode #{next_episode["number"]} of #{favorite.show[:name]} is airing #{next_episode["airdate"]} at #{next_episode["airtime"]}",
