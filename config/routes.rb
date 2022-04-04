@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get "/users/me" => "users#show"
+  get "/users" => "users#show"
   post "/users" => "users#create"
   patch "/users/me" => "users#update"
   delete "/users/me" => "users#destroy"
