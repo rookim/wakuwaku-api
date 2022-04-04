@@ -6,12 +6,29 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-user = User.create!([
-  {email: "helloherokim@gmail.com", username: "Ro", phone_number: "2246003311", password: "password"},
-  {email: "cohk21@gmail.com", username: "cohk21", password: "password"}
+User.create!([
+  {email: "helloherokim@gmail.com", username: "ro kim", password: "Password!23"},
+  {email: "cohk21@gmail.com", username: "best boi ro", password: "Password!23"},
+  {email: "test@test.com", username: "Test", password: "!Wakuwaku0"},
+  {email: "glgong@sbcglobal.net", username: "mr simp", password: "Password!23"},
+  {email: "joshuavillarde@gmail.com", username: "josh", password: "Password!23"}
 ])
 
-favorite = Favorite.create!([
-  {user_id: User.first.id, tvmaze_id: 919},
-  {user_id: User.last.id, tvmaze_id: 59412}
+Favorite.create!([
+  {user_id: User.third.id, tvmaze_id: 40140},
+  {user_id: User.third.id, tvmaze_id: 40143},
+  {user_id: User.third.id, tvmaze_id: 56939},
+  {user_id: User.third.id, tvmaze_id: 23796},
+  {user_id: User.third.id, tvmaze_id: 6306},
+  {user_id: User.third.id, tvmaze_id: 45590},
+  {user_id: User.third.id, tvmaze_id: 42174},
+  {user_id: User.third.id, tvmaze_id: 50915},
+  {user_id: User.second.id, tvmaze_id: 40140},
+  {user_id: User.second.id, tvmaze_id: 40143},
+  {user_id: User.second.id, tvmaze_id: 56939},
+  {user_id: User.second.id, tvmaze_id: 23796},
+  {user_id: User.second.id, tvmaze_id: 6306},
+  {user_id: User.second.id, tvmaze_id: 45590},
+  {user_id: User.second.id, tvmaze_id: 42174},
+  {user_id: User.second.id, tvmaze_id: 50915}
 ])
