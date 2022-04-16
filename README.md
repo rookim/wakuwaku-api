@@ -1,24 +1,7 @@
-# README
+# **wakuwaku API**
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain-wordmark.svg" height="90"/>
 
-Things you may want to cover:
+## **Overview**
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The wakuwaku API stores user information for the web app wakuwaku. Please check out the [frontend codebase](https://github.com/rookim/wakuwaku-frontend) where I go much more into detail about wakuwaku and all the features it has to offer.
