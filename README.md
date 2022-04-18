@@ -1,4 +1,4 @@
-# **wakuwaku API**
+# **wakuwaku API** <img src="https://media.giphy.com/media/qSmYjCygSR6xZeEUon/giphy.gif" width="50">
 
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain-wordmark.svg" height="90"/>
 
